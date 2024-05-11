@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
@@ -10,9 +10,9 @@ const Register = () => {
         e.preventDefault()
         const form = e.target
         const name = form.name.value
-        const email = form.email.value
-        const photo = form.photo.value
+        const email = form.email.value 
         const password = form.password.value
+        const photo = form.photo.value
         const newUser ={name, email, password, photo }
         console.log(newUser);
 
@@ -48,13 +48,6 @@ const Register = () => {
              </div>
              <div className="form-control">
                  <label className="label">
-                      <span className="label-text">Photo Url</span>
-                  </label>
-                 <input type="text" name="photo" placeholder="Photp Url" className="input input-bordered" 
-                  />
-             </div>
-             <div className="form-control">
-                 <label className="label">
                       <span className="label-text">Password</span>
                  </label>
                   <input type="password" name="password" placeholder="Password" className="input input-bordered" required
@@ -63,6 +56,13 @@ const Register = () => {
                  <label className="label">
                      <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                      </label>
+             </div>
+             <div className="form-control">
+                 <label className="label">
+                      <span className="label-text">Photo Url</span>
+                  </label>
+                 <input type="text" name="photo" placeholder="Photp Url" className="input input-bordered" 
+                  />
              </div>
                  <div className="form-control mt-6">
                      <button className="btn btn-info uppercase">Register</button>

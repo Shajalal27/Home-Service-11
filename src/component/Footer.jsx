@@ -13,7 +13,7 @@ const Footer = () => {
                                     <img className="w-16 h-12" src={logoImg} alt=""/>
                                 </a>
 
-                                <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Join 31,000+ other and never miss out on new tips, tutorials, and more.</p>
+                                <p className="max-w-sm mt-2 text-gray-500 dark:text-gray-400">Serving Lancaster, PA and the surrounding areas. Locally owned and operated, Mount Joy, PA.</p>
 
                                 <div className="flex mt-6 -mx-2">
                                     <a href="#"
