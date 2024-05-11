@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
-
+import logoImg from '../assets/images/logo.png'
 const Navbar = () => {
     const{user, logOut} = useContext(AuthContext);
 
@@ -12,7 +12,7 @@ const Navbar = () => {
     }
    
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar  ">
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -35,7 +35,9 @@ const Navbar = () => {
                     
                 </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                <a className=" text-xl">
+                    <img className="w-24 h-16" src={logoImg} alt="" />
+                </a>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -60,7 +62,20 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user?
-                    <button onClick={handleLogOut}  className="btn">Log out</button>
+                    <div tabIndex={0} role="button" className=" flex gap-4 mr-12">
+                    <div className=" bg-slate-400 w-14 h-14 rounded-full flex justify-center items-center">
+                        <img className="rounded-full" alt="" src={user.photoURL} 
+                    title={user.displayName}
+                    />
+                    </div>
+                    <div>
+                        <ul>
+                            <li>
+                                <button onClick={handleLogOut} className="btn">LOGOUT</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                     :
                 <Link to='/login'>
                     <button  className="btn">Login</button>

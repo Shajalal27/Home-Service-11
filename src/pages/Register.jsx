@@ -25,7 +25,8 @@ const Register = () => {
        })
     }
     return (
-        <div className="bg-[url(https://i.ibb.co/x7szsXW/img-login.jpg)] outline">
+        <div className="bg-[url(https://i.ibb.co/x7szsXW/img-login.jpg)] outline
+         ">
         <div>
         <h2 className="text-orange-600 text-center text-3xl font-bold pt-4">Please Register now! </h2>
          <form onSubmit={handleRegister}  className="card-body mx-auto lg:w-1/2 md:w-3/4 mt-2 bg-[#584d6c] opacity-95 font-bold">
