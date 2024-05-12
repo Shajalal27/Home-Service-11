@@ -45,8 +45,8 @@ export default function Slider() {
         <SwiperSlide className='relative'>
             <img className='w-full h-[500px] bg-cover' src={slider2} alt="" />
             <div className='absolute top-20 right-20'>
-            <h2 className='text-4xl font-bold text-orange-600'>Home Improvement and Renovation</h2>
-            <p className='text-xl font-medium'>Includes larger-scale projects such as <br /> kitchen remodeling, bathroom renovation, basement finishing,<br /> room additions, and whole-house renovations.</p>
+            <h2 className='text-4xl font-bold text-orange-600'>Heating/AC repair</h2>
+            <p className='text-xl font-medium'>Not only are AC and heating repairs expensive, <br />the systems inevitably seem to break at the time of <br />year you need them most</p>
             </div>
         </SwiperSlide>
         <SwiperSlide className='relative'>
