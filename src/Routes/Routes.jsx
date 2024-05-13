@@ -5,6 +5,7 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import AllServices from "../pages/AllServices";
 import SignleService from "../component/SignleService";
+import AddServicePage from "../pages/AddServicePage";
 
 
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
                 path: '/service/:id',
                 element: <SignleService/>,
                loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+            },
+            {
+                path: '/add-service',
+                element:<AddServicePage/>
             }
         ],
     }

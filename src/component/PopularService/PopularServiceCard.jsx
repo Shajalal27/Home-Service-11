@@ -2,15 +2,15 @@ import { Link } from "react-router-dom";
 
 
 const PopularServiceCard = ({service}) => {
-    const{_id, service_image, 
+    const{_id, 
+        service_image, 
         service_name,
-         service_description,  
-         service_price,
-         service_provider:{
-            image,
-            name
-         }
+        service_description,  
+        service_price,
+        service_provider
         } = service;
+    const providerImg = service_provider? service_provider.image : ""  ;  
+    const providerName = service_provider? service_provider.name : ""  ;  
    
     return (
         <div>
@@ -24,16 +24,18 @@ const PopularServiceCard = ({service}) => {
                     <div>
                     
                         <h2 className="block mt-2 text-2xl font-bold text-gray-800 ">{service_name}</h2>
-                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{service_description.slice(0, 100)}</p>
+                        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">{service_description?.slice(0, 100)}</p>
                         
                     </div>
 
                     <div className="mt-4 flex justify-between">
                         <div className="flex items-center">
+                        {providerImg && (
                             <div className="flex items-center">
-                                <img className="object-cover w-10 h-10 rounded-full" src={image} alt="Avatar"/>
-                                <a href="#" className="mx-2 font-semibold text-gray-700 dark:text-gray-200" tabIndex="0" role="link">Provider: {name}</a>
-                            </div>
+                            <img className="object-cover w-10 h-10 rounded-full" src={providerImg} alt="Avatar"/>
+                            <a href="#" className="mx-2 font-semibold text-gray-700 dark:text-gray-200" tabIndex="0" role="link">Provider: {providerName}</a>
+                        </div>
+                        )}
                             
                         </div>
                         <div>
