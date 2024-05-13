@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import toast from "react-hot-toast/headless";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 
 const AddServicePage = () => {
     const {user} = useContext(AuthContext);
-
+    const navigate = useNavigate()
 
     const handleAddService = e =>{
         e.preventDefault()
@@ -33,7 +34,11 @@ const AddServicePage = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data)
-            alert('Data added successfull')
+            navigate('/services');
+            if(data.insertedId){
+                toast.success('Data added successfull')
+            }
+           
         })
         .catch(err =>{
             console.log(err)
