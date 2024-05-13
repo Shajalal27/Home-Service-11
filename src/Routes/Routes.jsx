@@ -6,6 +6,8 @@ import Register from "../pages/Register";
 import AllServices from "../pages/AllServices";
 import SignleService from "../component/SignleService";
 import AddServicePage from "../pages/AddServicePage";
+import Booking from "../pages/Booking";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -39,6 +41,10 @@ const router = createBrowserRouter([
             {
                 path: '/add-service',
                 element:<AddServicePage/>
+            },
+            {
+                path: '/bookings',
+                element: <PrivateRoute><Booking/></PrivateRoute>
             }
         ],
     }

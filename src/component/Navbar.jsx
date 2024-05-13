@@ -50,7 +50,7 @@ const Navbar = () => {
                     <ul className="w-52">
                         <li><Link to= '/add-service'>Add Service</Link></li>
                         <li><Link to= '/mange-service'>Manage Service</Link></li>
-                        <li><Link to= '/booked-service'>Booked-Services</Link></li>
+                        <li><Link to= '/bookings'>Booked-Services</Link></li>
                         <li><Link to= '/service-to-do'>Service-To-Do</Link></li>
                     </ul>
                     </details>
@@ -71,6 +71,7 @@ const Navbar = () => {
                     <div>
                         <ul>
                             <li>
+                               
                                 <button onClick={handleLogOut} className="btn">LOGOUT</button>
                             </li>
                         </ul>

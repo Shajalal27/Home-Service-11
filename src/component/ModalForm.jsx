@@ -13,12 +13,10 @@ const ModalForm = () => {
     const { _id,
         service_id,
         service_name, 
-        service_image, 
-        deadline,
-        service_description, 
+        service_image,  
          service_price,
          service_provider:{
-            image,
+            
             name,
             provider_email
          }
@@ -52,6 +50,9 @@ const ModalForm = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data)
+            if(data.insertedId){
+                toast.success('Service Purchase Successfull')
+            }
         })
 
     }
