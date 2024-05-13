@@ -46,7 +46,7 @@ const SignleService = () => {
                 </div>
                 <div className="flex justify-end">
                     {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                    <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button>
+                    <button className="btn btn-warning text-xl font-bold" onClick={()=>document.getElementById('my_modal_4').showModal()}>Book Now</button>
                     <dialog id="my_modal_4" className="modal">
                     <div className="modal-box w-11/12 max-w-5xl">
                        <ModalForm/>

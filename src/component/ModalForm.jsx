@@ -8,22 +8,36 @@ const ModalForm = () => {
     const [startDate, setStartDate] = useState(new Date())
     const{user} = useContext(AuthContext);
     const service = useLoaderData()
-    const {service_id,
+    const { _id,
+        service_id,
         service_name, 
         service_image, 
-        email,
+        deadline,
         service_description, 
          service_price,
          service_provider:{
             image,
-            name
+            name,
+            provider_email
          }
          } = service || {};
 
     const handleBooking = async e =>{
         e.preventDefault()
+       const form = e.target
+        const serviceId = _id 
+        const user_email = user?.email
+        const name = form.name.value
+        const email = form.email.value
+        const price = form.price.value
+        // const deadline = deadline
+        const status = 'Pending'
 
+    const bookData ={
+        serviceId, name, user_email, price, deadline, provider_email, status
     }
+    console.table(bookData)
+    } 
     return (
         <div className="hero h-[450px] bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse gap-12">
@@ -34,7 +48,7 @@ const ModalForm = () => {
                     <img className="w-full h-40 rounded-md pb-4" src={service_image} alt="" />
                     </div>
                     <h2 className="text-xl text-gray-400 font-semibold"><span className="text-blue-400 font-bold">Provider Name:</span> {name}</h2>
-                    <p className="text-xl font-semibold"><span className="font-bold text-orange-400">Email:</span> {email}</p>
+                    <p className="text-xl font-semibold"><span className="font-bold text-orange-400">Email:</span> {provider_email}</p>
                 </div>
                 
                 <section className="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
@@ -72,7 +86,7 @@ const ModalForm = () => {
                         </div>
 
                         <div className="flex justify-end mt-6">
-                            <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Book Now</button>
+                            <button className="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">Purchase</button>
                         </div>
                     </form>
                 </section>
