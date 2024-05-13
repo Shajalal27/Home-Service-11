@@ -6,13 +6,14 @@ import ModalForm from "./ModalForm";
 
 const SignleService = () => {
     const service = useLoaderData()
-    const {service_name, 
+    const {
+        service_name, 
         service_image, 
         service_description, 
          service_price,
          service_provider:{
             image,
-            name
+            name,
          }
          } = service;
     return (
@@ -28,7 +29,7 @@ const SignleService = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
                         </svg>
 
-                        <span className="mx-3 text-xl font-bold text-red-500">Price: $ {service_price}</span>
+                        <span className="mx-3 text-xl font-bold text-red-500">Price:  {service_price}</span>
                     </div>
 
                    
@@ -53,7 +54,7 @@ const SignleService = () => {
                         <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button, it will close the modal */}
-                            <button className="btn">X</button>
+                            <button className="btn">close</button>
                         </form>
                         </div>
                     </div>

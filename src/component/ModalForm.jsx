@@ -3,6 +3,8 @@ import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
+import toast from "react-hot-toast";
+
 
 const ModalForm = () => {
     const [startDate, setStartDate] = useState(new Date())
@@ -23,21 +25,37 @@ const ModalForm = () => {
          } = service || {};
 
     const handleBooking = async e =>{
+        if(user?.email === provider_email) return toast.error('Action not permited!')
         e.preventDefault()
        const form = e.target
+       const name = form.name.value
         const serviceId = _id 
+        const provider_name = name
         const user_email = user?.email
-        const name = form.name.value
-        const email = form.email.value
-        const price = form.price.value
-        // const deadline = deadline
+        const user_name = user?.displayName
+        const deadline = startDate
         const status = 'Pending'
 
     const bookData ={
-        serviceId, name, user_email, price, deadline, provider_email, status
+        serviceId, service_name, service_image, provider_name, user_name, user_email, deadline, provider_email, service_price, status
     }
-    console.table(bookData)
-    } 
+        console.log(bookData)
+
+
+        fetch('http://localhost:5000/book', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(bookData)
+     } )
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data)
+        })
+
+    }
+
     return (
         <div className="hero h-[450px] bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse gap-12">
@@ -62,14 +80,12 @@ const ModalForm = () => {
                                  value={user?.displayName}
                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                             </div>
-
                             <div>
                                 <label className="text-gray-700 dark:text-gray-200" >Email Address</label>
                                 <input id="emailAddress" name="email" type="email" 
                                 value={user?.email}
                                 className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                             </div>
-
                             <div>
                                 <label className="text-gray-700 dark:text-gray-200" >Deadline</label>
                                 <DatePicker
@@ -83,6 +99,27 @@ const ModalForm = () => {
                                 <label className="text-gray-700 dark:text-gray-200" >Price</label>
                                 <input id="price" name="price" type="number" value={service_price} className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
                             </div>
+                            
+                            <div>
+                                <h2 className="text-xl font-semibold -mt-6">Special instruction</h2>
+                                <label className="text-gray-700 dark:text-gray-200 " >Address</label>
+                                <input id="username" name="name" type="text" 
+                                defaultValue='USA'
+                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            </div>
+                            <div>
+                                <label className="text-gray-700 dark:text-gray-200" >Area</label>
+                                <input id="username" name="name" type="text" 
+                                 defaultValue='Regional coverage'
+                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            </div>
+                            <div>
+                                <label className="text-gray-700 dark:text-gray-200" >Customized Service Plan</label>
+                                <input id="username" name="name" type="text" 
+                                defaultValue='true'
+                                className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring"/>
+                            </div>
+
                         </div>
 
                         <div className="flex justify-end mt-6">
