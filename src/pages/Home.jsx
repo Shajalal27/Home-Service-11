@@ -5,11 +5,11 @@ import Slider from "../component/Slider/Slider";
 
 
 const Home = () => {
-    const service = useLoaderData()
+    const service = useLoaderData();
     console.log(service)
     return (
         <div>
-             <Slider/>
+             <Slider className='relative'/>
              <PopularService service={service}/>
             <AppService/>
         </div>

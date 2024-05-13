@@ -3,6 +3,10 @@ import Main from "../layout/Main";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import AllServices from "../pages/AllServices";
+import SignleService from "../component/SignleService";
+
+
 
 const router = createBrowserRouter([
     {
@@ -22,6 +26,15 @@ const router = createBrowserRouter([
                 path: '/register',
                 element: <Register></Register>
             },
+            {
+                path: '/services',
+                element: <AllServices/>
+            },
+            {
+                path: '/service/:id',
+                element: <SignleService/>,
+               loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+            }
         ],
     }
 ])

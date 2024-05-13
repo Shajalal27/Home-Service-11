@@ -1,18 +1,10 @@
 /* eslint-disable react/prop-types */
 // import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import PopularServiceCard from "./PopularServiceCard";
 
 
 const PopularService = ( {service} ) => {
-    // const [services, setServices] = useState([])
-
-    // useEffect( () =>{
-    //     fetch('/public/data.json')
-    //     .then(res => res.json())
-    //     .then(data => setServices(data))
-
-    // }, [])
-
     
     return (
         <div>
@@ -24,6 +16,12 @@ const PopularService = ( {service} ) => {
                 {
                     service.map(service => <PopularServiceCard key={service._id} service={service}></PopularServiceCard>)
                 }
+            </div>
+            <div className="text-center pt-8 pb-12">
+                <Link to='/services'>
+                    <button className="btn text-2xl font-bold btn-primary">Show All</button>
+                </Link>
+                
             </div>
         </div>
     );

@@ -34,9 +34,9 @@ export default function Slider() {
         modules={[Autoplay, Pagination, Navigation]}
         className="mySwiper"
       >
-       <div className='w-full  rounded-lg'>
+       <div className='w-full  rounded-lg '>
         <SwiperSlide className='relative'>
-            <img className='w-full h-[500px] bg-cover' src={slider1} alt="" />
+            <img className='w-full h-[500px] bg-cover z-0' src={slider1} alt="" />
             <div className='absolute top-20 left-20'>
             <h2 className='text-4xl font-bold text-orange-600'>Home Improvement and Renovation</h2>
             <p className='text-xl font-medium'>Includes larger-scale projects such as <br /> kitchen remodeling, bathroom renovation, basement finishing,<br /> room additions, and whole-house renovations.</p>
