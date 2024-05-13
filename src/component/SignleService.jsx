@@ -1,5 +1,6 @@
 import { CiLocationOn } from "react-icons/ci";
 import { useLoaderData } from "react-router-dom";
+import ModalForm from "./ModalForm";
 
 
 
@@ -16,7 +17,7 @@ const SignleService = () => {
          } = service;
     return (
        
-        <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center border-2 mt-12 mb-6 shadow-lg">
+        <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center border-2 mt-12 mb-12 shadow-lg">
         <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
                 <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">{service_name}</h1>
@@ -44,7 +45,19 @@ const SignleService = () => {
             
                 </div>
                 <div className="flex justify-end">
-                        <button className="btn btn-warning text-xl font-semibold">Book Now</button>
+                    {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                    <button className="btn" onClick={()=>document.getElementById('my_modal_4').showModal()}>open modal</button>
+                    <dialog id="my_modal_4" className="modal">
+                    <div className="modal-box w-11/12 max-w-5xl">
+                       <ModalForm/>
+                        <div className="modal-action">
+                        <form method="dialog">
+                            {/* if there is a button, it will close the modal */}
+                            <button className="btn">X</button>
+                        </form>
+                        </div>
+                    </div>
+                    </dialog>
                  </div>
             </div>
         </div>
