@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
@@ -10,6 +10,7 @@ const ModalForm = () => {
     const [startDate, setStartDate] = useState(new Date())
     const{user} = useContext(AuthContext);
     const service = useLoaderData()
+    const navigate = useNavigate()
     const { _id,
         service_id,
         service_name, 
@@ -50,6 +51,7 @@ const ModalForm = () => {
         .then(res => res.json())
         .then(data =>{
             console.log(data)
+            navigate('/bookings')
             if(data.insertedId){
                 toast.success('Service Purchase Successfull')
             }

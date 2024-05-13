@@ -116,6 +116,7 @@ const Login = () => {
         }
         catch (err) {
             console.log(err)
+            navigate('/register')
             toast.error( 'Logged in faild')
         }
     }
@@ -128,6 +129,7 @@ const Login = () => {
         }
         catch (err){
             console.log(err)
+
             toast.error(err, 'Logged in faild')
         }
     }
