@@ -8,6 +8,7 @@ import SignleService from "../component/SignleService";
 import AddServicePage from "../pages/AddServicePage";
 import Booking from "../pages/Booking";
 import PrivateRoute from "./PrivateRoute";
+import ManageService from "../pages/ManageService/ManageService";
 
 
 
@@ -40,11 +41,16 @@ const router = createBrowserRouter([
             },
             {
                 path: '/add-service',
-                element:<AddServicePage/>
+                element:<PrivateRoute><AddServicePage/></PrivateRoute>
             },
             {
                 path: '/bookings',
                 element: <PrivateRoute><Booking/></PrivateRoute>
+            },
+            {
+                path: '/manage-service',
+                element: <ManageService/>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
             }
         ],
     }
