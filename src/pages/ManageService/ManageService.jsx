@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router-dom";
 import ManageCard from "./ManageCard";
-import toast from "react-hot-toast";
-import { useState } from "react";
+import Swal from "sweetalert2";
 
 
 
@@ -9,25 +8,37 @@ import { useState } from "react";
 
 const ManageService = () => {
     const service = useLoaderData()
-    const[services, setServices] = useState()
 
     const handleDelete = id =>{
-        const proceed = confirm('Are Your sure Delete');
-        if(proceed){
-            fetch(`${import.meta.env.VITE_API_URL}/service/${id} `, {
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data =>{
-                services(data)
-                if(data.deletedCount > 0){
-                    toast.success('Delete Successfull')
-                    const remaining = service.filter(services => services._id !== id)
-                    setServices(remaining)
-                }
-            })
-        }
-    }
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to service!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) =>{
+            if(result.isConfirmed){
+                fetch(`${import.meta.env.VITE_API_URL}/service/${id} `, {
+                    method: 'DELETE',
+                    node: 'no-cors',
+                })
+                .then(res => res.json())
+                .then(data =>{
+                    console.log(data)
+                    if(data.deletedCount > 0){
+                        Swal.fire({
+                         title: "Deleted!",
+                         text: "Service deleted successfull.",
+                         icon: "success"
+                        });
+                    }
+                })
+            }
+                
+          }) 
+    }             
     
     return (
        <div className="">

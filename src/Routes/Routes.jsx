@@ -9,6 +9,7 @@ import AddServicePage from "../pages/AddServicePage";
 import Booking from "../pages/Booking";
 import PrivateRoute from "./PrivateRoute";
 import ManageService from "../pages/ManageService/ManageService";
+import Update from "../pages/Update";
 
 
 
@@ -51,6 +52,11 @@ const router = createBrowserRouter([
                 path: '/manage-service',
                 element: <ManageService/>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
+            },
+            {
+                path: '/update/:id',
+                element: <Update/>,
+                loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/service/${params.id}`)
             }
         ],
     }
