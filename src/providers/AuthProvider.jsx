@@ -4,9 +4,6 @@ import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
 
 
-
-
-
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
 const googleProvider = new GoogleAuthProvider()
@@ -14,6 +11,8 @@ const googleProvider = new GoogleAuthProvider()
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const[loading, setLoading] = useState(true)
+    const[isAuthenticated, setIsAutheticated] = useState(false);
+
 
     const createUser = (email, password) =>{
         setLoading(true)
@@ -21,14 +20,18 @@ const AuthProvider = ({children}) => {
     }
 
     const logOut = () =>{
+        setIsAutheticated(false);
        return signOut(auth);
     }
 
     //sign in
     const signIn =(email, password) =>{
+        setIsAutheticated(true);
         setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
+
+
 
     //sign in google
     const signInWithGoogle = () =>{

@@ -6,10 +6,11 @@ import Register from "../pages/Register";
 import AllServices from "../pages/AllServices";
 import SignleService from "../component/SignleService";
 import AddServicePage from "../pages/AddServicePage";
-import Booking from "../pages/Booking";
 import PrivateRoute from "./PrivateRoute";
 import ManageService from "../pages/ManageService/ManageService";
 import Update from "../pages/Update";
+import ServiceToDo from "../pages/ServiceToDo/ServiceToDo";
+import Booking from "../pages/Booking";
 
 
 
@@ -20,8 +21,8 @@ const router = createBrowserRouter([
         children:[
             {
               index:true,
-              element: <Home></Home>,
-              loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
+              element: <Home></Home>
+            //   loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
             },
             {
                 path: '/login',
@@ -33,11 +34,12 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                element: <AllServices/>
+                element: <AllServices/>,
+                loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
             },
             {
                 path: '/service/:id',
-                element: <SignleService/>,
+                element:<PrivateRoute> <SignleService/></PrivateRoute>,
                loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
             },
             {
@@ -46,11 +48,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/bookings',
-                element: <PrivateRoute><Booking/></PrivateRoute>
+                element:<PrivateRoute><Booking/></PrivateRoute>
+            },
+            {
+                path: '/service-to-do',
+                element: <PrivateRoute><ServiceToDo/></PrivateRoute>
             },
             {
                 path: '/manage-service',
-                element: <ManageService/>,
+                element: <PrivateRoute><ManageService/></PrivateRoute>,
                 loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
             },
             {

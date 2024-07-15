@@ -24,7 +24,7 @@ const AppService = () => {
                    </div>
                 </div>
                 <div >
-                    <img src={appImg} alt="" />
+                    <img data-aos="flip-right" src={appImg} alt="" />
                     
                 </div>
             </div>

@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../providers/AuthProvider";
-import BookingTableRow from "./BookingTableRow";
+import { AuthContext } from "../../providers/AuthProvider";
+import ServiceToDoTable from "./ServiceToDoTable";
 
 
-const Booking = () => {
 
+const ServiceToDo = () => {
     const {user} = useContext(AuthContext);
     const[bookings, setBookings] = useState([]);
+
+   
 
     const url = `http://localhost:5000/book?email=${user?.email}`;
 
@@ -20,8 +22,9 @@ const Booking = () => {
             console.log(err);
         });
 
-    }, [])
+    }, [user])
 
+   
     return (
         <div>
             <h2>Booking service:{bookings.length}</h2>
@@ -30,22 +33,22 @@ const Booking = () => {
                     {/* head */}
                     <thead>
                     <tr className="text-lg font-bold text-orange-500">
+                        
                         <th>CUSTOMER</th>
                         <th>SERVICE NAME</th>
                         <th>PRICE</th>
                         <th>DATE</th>
                         <th>STATUS</th>
-                        
+
                     </tr>
                     </thead>
                     <tbody>
-                    
                     {
                         bookings.map(booking =>
-                            <BookingTableRow 
+                            <ServiceToDoTable 
                             key={booking._id}
                             booking={booking}
-                            ></BookingTableRow>
+                            ></ServiceToDoTable>
                         )
                     }
                     </tbody>
@@ -55,4 +58,6 @@ const Booking = () => {
     );
 };
 
-export default Booking;
+export default ServiceToDo;
+
+

@@ -11,11 +11,11 @@ const SignleService = () => {
         service_image, 
         service_description, 
          service_price,
-         service_provider:{
-            image,
-            name,
-         }
+         service_area,
+         service_provider
          } = service;
+         const providerImg = service_provider? service_provider.image : ""  ;  
+         const providerName = service_provider? service_provider.name : ""  ;  
     return (
        
         <div className="container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center border-2 mt-12 mb-12 shadow-lg">
@@ -36,12 +36,12 @@ const SignleService = () => {
                     <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
                     <CiLocationOn style={{fontSize:'40'}}/>
 
-                        <span className="mx-3">USA</span>
+                        <span className="mx-3">{service_area}</span>
                     </div>
 
                     <div className="flex items-center px-3 gap-6">
-                        <img className="w-12 h-12 rounded" src={image} alt="" />  
-                        <p className="text-xl font-semibold">{name}</p> 
+                        <img className="w-12 h-12 rounded" src={providerImg} alt="" />  
+                        <p className="text-xl font-semibold">{providerName}</p> 
                     </div>
             
                 </div>
@@ -50,11 +50,13 @@ const SignleService = () => {
                     <button className="btn btn-warning text-xl font-bold" onClick={()=>document.getElementById('my_modal_4').showModal()}>Book Now</button>
                     <dialog id="my_modal_4" className="modal">
                     <div className="modal-box w-11/12 max-w-5xl">
+                       <div>
                        <ModalForm/>
+                       </div>
                         <div className="modal-action">
                         <form method="dialog">
                             {/* if there is a button, it will close the modal */}
-                            <button className="btn">close</button>
+                            <button className="btn">Close</button>
                         </form>
                         </div>
                     </div>

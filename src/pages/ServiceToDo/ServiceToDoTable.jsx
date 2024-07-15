@@ -1,8 +1,8 @@
 
+const ServiceToDoTable = ({booking}) => {
+    const{service_image, service_name, user_name, user_email, service_price, status} = booking;
 
-
-const BookingTableRow = ({booking}) => {
-    const{ service_image, service_name, user_name, user_email, service_price, deadline, status} = booking;
+    
     return (
         <tr>
             
@@ -23,16 +23,18 @@ const BookingTableRow = ({booking}) => {
                 {service_name}
             </td>
             <td><span>$</span>{service_price}</td>
-            <td>{new Date(booking.deadline).toLocaleDateString()}</td>
+            <td> {new Date(booking.deadline).toLocaleDateString()}</td>
             <td>
-            <button className="p-1 border rounded-md bg-rose-200">
+            <select className="p-3 border rounded-md bg-rose-200">
                 <option className="p-2 text-lg font-semibold rounded-md" value="" defaultValue={status}>Pending</option>
+                <option className="p-2 text-lg font-semibold rounded-md" value="" defaultValue={status}>Working</option>
+                <option className="p-2 text-lg font-semibold rounded-md" value="" defaultValue={status}>Complete</option>
                
-            </button>
+            </select>
             </td>
             
         </tr>
     );
 };
 
-export default BookingTableRow;
+export default ServiceToDoTable;

@@ -18,46 +18,56 @@ const Navbar = () => {
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                 </div>
-                <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  z-[5] p-2 shadow bg-base-100 rounded-box w-52">
-                <li><Link to= '/'>Home</Link></li>
-                <li><Link to= '/'>Services</Link></li>
-                <li>
-                    <details>
-                    <summary className="">Dashboard</summary>
-                    <ul className="p-2  z-10">
-                        <li><Link to= '/'>Add Service</Link></li>
-                        <li><Link to= '/'>Manage Service</Link></li>
-                        <li><Link to= '/'>Booked-Services</Link></li>
-                        <li><Link to= '/'>Service-To-Do</Link></li>
+                { user?
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  z-[5] p-2 shadow bg-base-100 rounded-box w-52">
+                    <li><Link to= '/'>Home</Link></li>
+                    <li><Link to= '/services'>Services</Link></li>
+                    <li>
+                        <details>
+                        <summary>Dashboard</summary>
+                        <ul className="w-52">
+                            <li><Link to= '/add-service'>Add Service</Link></li>
+                            <li><Link to= '/manage-service'>Manage Service</Link></li>
+                            <li><Link to= '/bookings'>Booked-Services</Link></li>
+                            <li><Link to= '/service-to-do'>Service-To-Do</Link></li>
+                        </ul>
+                        </details>
+                    </li>
+                     </ul>
+                :
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3  z-[5] p-2 shadow bg-base-100 rounded-box w-52">
+                        <li><Link to= '/'>Home</Link></li>
+                        <li><Link to= '/services'>Services</Link></li>
                     </ul>
-                    </details>
-                </li>
-                    
-                </ul>
+                }
              </div>
                 <a className=" text-xl">
                     <img className="w-32 h-20" src={logoImg} alt="" />
                 </a>
             </div>
             <div className="navbar-center hidden  lg:flex">
-                <ul className="menu menu-horizontal px-4 dropdown-content mt-3  z-[5] p-2 shadow bg-base-100  space-x-4">
-                
-                <li><Link to= '/'>Home</Link></li>
-                <li><Link to= '/services'>Services</Link></li>
-                <li>
-                    <details>
-                    <summary>Dashboard</summary>
-                    <ul className="w-52">
-                        <li><Link to= '/add-service'>Add Service</Link></li>
-                        <li><Link to= '/manage-service'>Manage Service</Link></li>
-                        <li><Link to= '/bookings'>Booked-Services</Link></li>
-                        <li><Link to= '/service-to-do'>Service-To-Do</Link></li>
+                {user?
+                    <ul className="menu menu-horizontal px-4 dropdown-content mt-3  z-[5] p-2 shadow bg-base-100  space-x-4"> 
+                    <li><Link to= '/'>Home</Link></li>
+                    <li><Link to= '/services'>Services</Link></li>
+                    <li>
+                        <details>
+                        <summary>Dashboard</summary>
+                        <ul className="w-52">
+                            <li><Link to= '/add-service'>Add Service</Link></li>
+                            <li><Link to= '/manage-service'>Manage Service</Link></li>
+                            <li><Link to= '/bookings'>Booked-Services</Link></li>
+                            <li><Link to= '/service-to-do'>Service-To-Do</Link></li>
+                        </ul>
+                        </details>
+                    </li>
                     </ul>
-                    </details>
-                </li>
-                   
-                
-                </ul>
+                : 
+                <ul className="menu menu-horizontal px-4 dropdown-content mt-3  z-[5] p-2 shadow bg-base-100  space-x-4"> 
+                    <li><Link to= '/'>Home</Link></li>
+                    <li><Link to= '/services'>Services</Link></li>
+                    </ul>
+                }      
             </div>
             <div className="navbar-end">
                 {
