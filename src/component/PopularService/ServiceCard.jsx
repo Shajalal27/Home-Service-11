@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const ServiceCard = ({service}) => {
+    const{user} = useContext(AuthContext);
     const{_id, 
         service_image, 
         service_name,
@@ -39,9 +42,15 @@ const ServiceCard = ({service}) => {
                             
                         </div>
                         <div>
-                            <Link to ={`/service/${_id}`}>
+                        { user?
+                                <Link to ={`/service/${_id}`}>
                                 <button className="btn btn-info text-xl font-bold">View Details</button>
                             </Link>
+                            :
+                            <Link to ="/login">
+                                <button className="btn btn-info text-xl font-bold">View Details</button>
+                            </Link>
+                        }
                         </div>
                     </div>
                 </div>
