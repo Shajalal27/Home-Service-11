@@ -8,7 +8,6 @@ import ServiceCard from "../component/PopularService/ServiceCard";
 const AllServices = () => {
    const[services, setServices] = useState([]);
    const history = useHistory();
-   const[search, setSearch] = useState('')
    const[searchText, setSearchText] = useState('')
 
    useEffect(()=>{
@@ -19,19 +18,27 @@ const AllServices = () => {
         .catch(err =>{
             console.error(err);
         })
-   }, [])
-    // const allServices = useLoaderData() 
-    
+   }, []);
 
-    // useEffect( () =>{
-    //      fetch(`${import.meta.env.VITE_API_URL}/service`)
-    //     .then(res => res.json())
-    //     .then(data =>{
-    //         console.log(data)
-    //     })
-    // }, [])
+   const handleSearch = (event) =>{
+    setSearchText(event.target.value);
+   }
 
-    
+   const filteredServices = services.filter(service =>{
+    const name = service.service_name || '';
+    const description =  service.service_description || '';
+    const providerName  = service.providerName || '';
+    const area = service.service_area || '';
+
+    return(
+        name.toLowerCase().includes(searchText.toLowerCase()) ||
+        description.toLowerCase().includes(searchText.toLowerCase()) ||
+        providerName.toLowerCase().includes(searchText.toLowerCase()) ||
+        area.toLowerCase().includes(searchText.toLowerCase())
+    )
+
+   });
+   
     
     return (
         
@@ -41,7 +48,7 @@ const AllServices = () => {
                 <div  className="flex gap-2 items-center justify-center pt-2">
                 <input type="text" 
                     id="searchInput"
-                    onChange={(e) => setSearchText(e.target.value)}
+                    onChange={handleSearch}
                     value={searchText}
                     name="search"
                     placeholder="Enter Service Title" 
@@ -51,10 +58,11 @@ const AllServices = () => {
                 <button  className="btn btn-primary text-xl font-semibold">Search</button>
                 </div>
                 
+                
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 gap-8 pt-16">
                 {
-                    services.map(service => (<ServiceCard key={service._id} service={service}></ServiceCard>))
+                    filteredServices.map(service => (<ServiceCard key={service._id} service={service}></ServiceCard>))
                 }
                 
 
