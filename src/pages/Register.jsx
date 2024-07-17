@@ -6,26 +6,40 @@ import toast from "react-hot-toast";
 
 
 const Register = () => {
-    const{createUser} = useContext(AuthContext)
+    const{ createUser, updateUserProfile, user, setUser} = useContext(AuthContext)
     const navigate = useNavigate()
-    const handleRegister = e =>{
+    const handleRegister = async e =>{
         e.preventDefault()
         const form = e.target
         const name = form.name.value
         const email = form.email.value 
         const password = form.password.value
         const photo = form.photo.value
-        const newUser ={name, email, password, photo }
+        const newUser ={email, password, name, photo }
         console.log(newUser);
-        navigate('/')
-        toast.success('Registetion Successfull')
-       createUser(email, password)
-       .then(result =>{
-        console.log(result.user)
-       })
-       .catch(error =>{
-        console.log(error)
-       })
+        try{
+            const result = await createUser(email, password)
+            console.log(result);
+            await updateUserProfile(name, photo)
+            setUser({ ...user, photoURL:photo, displayName: name})
+            navigate('/')
+            toast.success('Registetion Successfull')
+        } catch(err) {
+            console.log(err)
+            toast.error('Registetion faild')
+        }
+
+    
+
+    //     navigate('/')
+    //     toast.success('Registetion Successfull')
+    //    createUser(email, password)
+    //    .then(result =>{
+    //     console.log(result.user)
+    //    })
+    //    .catch(error =>{
+    //     console.log(error)
+    //    })
     }
     return (
         <div className="bg-[url(https://i.ibb.co/x7szsXW/img-login.jpg)] outline

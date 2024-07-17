@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 import { GoogleAuthProvider } from "firebase/auth";
@@ -14,9 +14,18 @@ const AuthProvider = ({children}) => {
     const[isAuthenticated, setIsAutheticated] = useState(false);
 
 
-    const createUser = (email, password) =>{
+    const createUser = async (email, password) =>{
         setLoading(true)
-        return createUserWithEmailAndPassword(auth, email, password)
+        return await createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    const updateUserProfile = async(name, photoURL) =>{
+        if(auth.currentUser){
+            await updateProfile(auth.currentUser,{
+                displayName: name,
+                photoURL: photoURL
+            });
+        }
     }
 
     const logOut = () =>{
@@ -60,6 +69,7 @@ const AuthProvider = ({children}) => {
         loading,
         setLoading,
         createUser,
+        updateUserProfile
        
     }
     return <AuthContext.Provider value={authInfo} >{children}</AuthContext.Provider>

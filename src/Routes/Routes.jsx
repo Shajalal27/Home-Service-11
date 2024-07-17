@@ -11,6 +11,7 @@ import ManageService from "../pages/ManageService/ManageService";
 import Update from "../pages/Update";
 import ServiceToDo from "../pages/ServiceToDo/ServiceToDo";
 import Booking from "../pages/Booking";
+import ErrorPage from "../pages/ErrorPage";
 
 
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Main/>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
               index:true,

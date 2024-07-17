@@ -1,5 +1,5 @@
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../providers/AuthProvider";
 import toast from "react-hot-toast";
@@ -10,7 +10,12 @@ import toast from "react-hot-toast";
 const Login = () => {
     const navigate = useNavigate()
     const location = useLocation()
-    const{signIn, signInWithGoogle} = useContext(AuthContext);
+    const{signIn, signInWithGoogle, user, loading} = useContext(AuthContext);
+    useEffect(() =>{
+        if(user){
+            navigate('/')
+        }
+    }, [navigate, user])
     const from = location.state || '/' 
 
     //Sign in Emaim Password
@@ -46,6 +51,8 @@ const Login = () => {
             toast.error(err, 'Logged in faild')
         }
     }
+
+    if(user || loading) return
     return (
         <div className="">
         <div className="w-full max-w-lg p-6 m-auto mx-auto mt-12 bg-white rounded-lg shadow-md dark:bg-gray-800">

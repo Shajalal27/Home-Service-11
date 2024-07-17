@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import useHistory from "use-history";
 import axios from "axios";
 import ServiceCard from "../component/PopularService/ServiceCard";
 
@@ -7,7 +6,7 @@ import ServiceCard from "../component/PopularService/ServiceCard";
 
 const AllServices = () => {
    const[services, setServices] = useState([]);
-   const history = useHistory();
+  
    const[searchText, setSearchText] = useState('')
 
    useEffect(()=>{

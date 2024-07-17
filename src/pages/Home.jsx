@@ -6,14 +6,14 @@ import Slider from "../component/Slider/Slider";
 import axios from "axios";
 import ServiceCard from "../component/PopularService/ServiceCard";
 import useHistory from "use-history";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home = () => {
     // const service = useLoaderData();
     // console.log(service)
     const[services, setServices] = useState([]);
     const history = useHistory();
-    const navigate = useNavigate();
+    
 
     useEffect(()=>{
         axios.get('http://localhost:5000/service')
