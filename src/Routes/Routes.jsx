@@ -24,7 +24,6 @@ const router = createBrowserRouter([
             {
               index:true,
               element: <Home></Home>
-            //   loader: () => fetch(`${import.meta.env.VITE_API_URL}/service`)
             },
             {
                 path: '/login',
@@ -42,7 +41,7 @@ const router = createBrowserRouter([
             {
                 path: '/service/:id',
                 element:<PrivateRoute> <SignleService/></PrivateRoute>,
-               loader: ({params}) => fetch(`http://localhost:5000/service/${params.id}`)
+               loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/service/${params.id}`)
             },
             {
                 path: '/add-service',

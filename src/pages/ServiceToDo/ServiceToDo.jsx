@@ -10,7 +10,7 @@ const ServiceToDo = () => {
 
    
 
-    const url = `http://localhost:5000/book?email=${user?.email}`;
+    const url = `${import.meta.env.VITE_API_URL}/book?email=${user?.email}`;
 
     useEffect(() =>{
         fetch(url)

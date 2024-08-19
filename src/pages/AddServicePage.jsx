@@ -24,7 +24,7 @@ const AddServicePage = () => {
          }
          console.log(addData)
 
-         fetch('http://localhost:5000/add', {
+         fetch(`${import.meta.env.VITE_API_URL}/add`, {
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

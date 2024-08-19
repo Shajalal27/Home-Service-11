@@ -29,17 +29,6 @@ const Register = () => {
             toast.error('Registetion faild')
         }
 
-    
-
-    //     navigate('/')
-    //     toast.success('Registetion Successfull')
-    //    createUser(email, password)
-    //    .then(result =>{
-    //     console.log(result.user)
-    //    })
-    //    .catch(error =>{
-    //     console.log(error)
-    //    })
     }
     return (
         <div className="bg-[url(https://i.ibb.co/x7szsXW/img-login.jpg)] outline

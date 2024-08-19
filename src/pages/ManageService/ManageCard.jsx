@@ -8,7 +8,7 @@ const ManageCard = ({service, handleDelete}) => {
         service_name,
         service_description,  
         service_price,
-        service_provider
+        
         } = service;
 
     const handleUpdate = id =>{

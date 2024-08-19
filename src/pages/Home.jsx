@@ -17,7 +17,7 @@ const Home = () => {
     
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/service')
+        axios.get(`${import.meta.env.VITE_API_URL}/service`)
         .then(res =>{
             setServices(res.data.slice(0,6));
         })
