@@ -55,18 +55,9 @@ const ServiceCard = ({service}) => {
                     </div>
                 </div>
             </div>
+            
         </div>
-        // <div className="card">
-        //     <img src={service_image} alt={service_name} />
-        //     <h2>{service_name}</h2>
-        //     <p>{service_description.substring(0, 100)}</p>
-        //     <button onClick={()=>onViewDetails(_id)}>View Details</button>
-        //     <div className="provider-info">
-        //         <img src={providerImg} alt={providerName} />
-        //         <p>{providerName}</p>
-        //     </div>
-        //     <p>${service_price}</p>
-        // </div>
+       
     );
 };
 

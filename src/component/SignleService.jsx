@@ -16,7 +16,8 @@ const SignleService = () => {
     const{user} = useContext(AuthContext);
     const { _id,
             service_id,
-            service_name, 
+            service_name,
+            service_description ,
             service_image,  
             service_price,
             service_provider:{  
@@ -61,7 +62,7 @@ const SignleService = () => {
         <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg">
                 <h1 className="text-3xl font-semibold tracking-wide text-gray-800 dark:text-white lg:text-4xl">{service_name}</h1>
-                <p className="mt-4 text-gray-600 dark:text-gray-300">service_description</p>
+                <p className="mt-4 text-gray-600 dark:text-gray-300">{service_description}</p>
                 <div className="grid gap-6 mt-8 sm:grid-cols-2">
                     <div className="flex items-center text-gray-800 -px-3 dark:text-gray-200">
                         <svg className="w-5 h-5 mx-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

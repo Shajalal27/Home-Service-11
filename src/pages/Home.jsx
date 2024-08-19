@@ -7,6 +7,7 @@ import axios from "axios";
 import ServiceCard from "../component/PopularService/ServiceCard";
 import useHistory from "use-history";
 import { Link } from "react-router-dom";
+import FeedBackSection from "./FeedBackSection";
 
 const Home = () => {
     // const service = useLoaderData();
@@ -56,7 +57,7 @@ const Home = () => {
                 </Link>
                 
              </div>
-             
+             <FeedBackSection></FeedBackSection>
             <AppService/>
         </div>
     );

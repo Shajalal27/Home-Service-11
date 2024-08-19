@@ -7,7 +7,7 @@ import appStoreImg from '../assets/images/home-app-store.png'
 const AppService = () => {
     return (
         <div>
-            <div className='text-center text-4xl font-bold text-orange-500 pb-12'>
+            <div className='text-center text-4xl font-bold text-orange-500 pb-12 pt-10'>
             Build Your On-demand Home Services App Now
             </div>
             <div className='flex lg:flex-row  flex-col-reverse  justify-center items-center'>

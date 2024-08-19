@@ -2,7 +2,8 @@
 
 
 const BookingTableRow = ({booking}) => {
-    const{ service_image, service_name, user_name, user_email, service_price, deadline, status} = booking;
+    const{ service_image, service_name, user_name, user_email, service_price, status} = booking;
+
     return (
         <tr>
             
@@ -25,6 +26,11 @@ const BookingTableRow = ({booking}) => {
             <td><span>$</span>{service_price}</td>
             <td>{new Date(booking.deadline).toLocaleDateString()}</td>
             <td>
+            <td>
+                <div>
+
+                </div>
+            </td>
             <button className="p-1 border rounded-md bg-rose-200">
                 <option className="p-2 text-lg font-semibold rounded-md" value="" defaultValue={status}>Pending</option>
                
