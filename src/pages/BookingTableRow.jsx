@@ -3,6 +3,7 @@
 
 const BookingTableRow = ({booking}) => {
     const{ service_image, service_name, user_name, user_email, service_price, status} = booking;
+    
 
     return (
         <tr>

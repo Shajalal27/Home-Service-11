@@ -1,33 +1,28 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import axios from "axios";
 import ServiceToDoTable from "./ServiceToDoTable";
 
 
 
+
 const ServiceToDo = () => {
-    const {user} = useContext(AuthContext);
-    const[bookings, setBookings] = useState([]);
-
-   
-
-    const url = `${import.meta.env.VITE_API_URL}/book?email=${user?.email}`;
-
-    useEffect(() =>{
-        fetch(url)
-        .then(res => res.json())
-        .then(data =>{
-            setBookings(data);
-        })
-        .catch(err =>{
-            console.log(err);
-        });
-
+   const{user} = useContext(AuthContext)
+   const[bookings, setBookings] = useState([])
+    
+    useEffect( () =>{
+        getData()
     }, [user])
 
+    const getData= async () =>{
+        const{data} = await axios(`${import.meta.env.VITE_API_URL}/book`)
+        console.log(data)
+        setBookings(data)
+    }
    
     return (
         <div>
-            <h2>Booking service:{bookings.length}</h2>
+           
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -44,12 +39,10 @@ const ServiceToDo = () => {
                     </thead>
                     <tbody>
                     {
-                        bookings.map(booking =>
-                            <ServiceToDoTable 
-                            key={booking._id}
-                            booking={booking}
-                            ></ServiceToDoTable>
-                        )
+                      bookings.map(booking =><ServiceToDoTable
+                        key={booking._id}
+                       booking={booking}
+                      />)  
                     }
                     </tbody>
                 </table>
@@ -59,5 +52,8 @@ const ServiceToDo = () => {
 };
 
 export default ServiceToDo;
+
+
+
 
 

@@ -6,25 +6,27 @@ import BookingTableRow from "./BookingTableRow";
 const Booking = () => {
 
     const {user} = useContext(AuthContext);
-    const[bookings, setBookings] = useState([]);
+    const[booking, setBookings] = useState([]);
+   
 
-    const url = `${import.meta.env.VITE_API_URL}/book?email=${user?.email}`;
+    const url = `${import.meta.env.VITE_API_URL}/book`;
+    console.log(url)
 
     useEffect(() =>{
         fetch(url)
         .then(res => res.json())
         .then(data =>{
             setBookings(data);
+            
         })
         .catch(err =>{
             console.log(err);
         });
 
-    }, [])
+    }, [user])
 
     return (
         <div>
-            <h2>Booking service:{bookings.length}</h2>
             <div className="overflow-x-auto">
                 <table className="table">
                     {/* head */}
@@ -41,7 +43,7 @@ const Booking = () => {
                     <tbody>
                     
                     {
-                        bookings.map(booking =>
+                        booking.map(booking =>
                             <BookingTableRow 
                             key={booking._id}
                             booking={booking}

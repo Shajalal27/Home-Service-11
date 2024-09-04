@@ -1,19 +1,19 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+// import axios from "axios";
+// import { useEffect } from "react";
 
 const ServiceToDoTable = ({booking}) => {
-    const{service_image, service_name, user_name, user_email, service_price, status} = booking;
+    const{service_image, service_name, user_name, user_email, service_price, } = booking;
 
-    const[services, setServices] = useState([]);
-    const[loading, setLoading] = useState(true);
+    // const[services, setServices] = useState([]);
+    // const[loading, setLoading] = useState(true);
 
-    useEffect( () =>{
+    // useEffect( () =>{
         
-    }, []);
+    // }, []);
 
-    const handleStatusChange = (id, newStatus) =>{
-        axios.put(`${import.meta.env.VITE_API_URL}/`,)
-    }
+    // const handleStatusChange = (id, newStatus) =>{
+    //     axios.put(`${import.meta.env.VITE_API_URL}/`,)
+    // }
     
     return (
         <tr>

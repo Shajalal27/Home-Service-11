@@ -7,7 +7,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-// import ModalForm from "./ModalForm"; 
 
 const SignleService = () => {
     const service = useLoaderData();
@@ -26,8 +25,7 @@ const SignleService = () => {
             }
             } = service || {};
 
-        //  const providerImg = service_provider? service_provider.image : ""  ;  
-        //  const providerName = service_provider? service_provider.name : ""  ;
+       
 
          const handleBooking = async e =>{
             if(user?.email === provider_email) return toast.error('Action not permitted')
